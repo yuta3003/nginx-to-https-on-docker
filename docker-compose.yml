@@ -1,0 +1,24 @@
+version: "3"
+
+
+services:
+  ca:
+    build:
+      context: .
+      dockerfile: ./docker/omgwtfssl/Dockerfile
+    environment:
+      - SSL_SUBJECT="localhost"
+      - SSL_DNS="localhost"
+    volumes:
+      - ./nginx-conf.d/ssl:/certs
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx-conf.d:/etc/nginx/conf.d
+    tty: true
