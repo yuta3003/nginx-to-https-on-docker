@@ -1,3 +1,11 @@
 
 
-./nginx-conf.d/ssl/ca.pemをルート認証局として登録する。
+
+
+# usage
+- ドメインを設定する。
+  - docker-compose.yml
+    - SSL_SUBJECT
+	- SSL_DNS
+  - nginx-conf.d/default.conf
+    - server_name
